@@ -57,3 +57,19 @@ where
 # Returning types that implement traits
 
 The `impl Trait` syntax can also be used to return a value of some type that implements a trait. The ability to specify a return type only by the trait it implements is especially useful in the context of [closures and iterators](). Closures and iterstors create types that only the compiler knows or types that are very long to specify.
+
+# Deriving
+
+The compiler is capable of providing basic implementations for some traits via the `#[derive]` attribute, though these traits can still be manually implemented. However, derivable traits are limited down to the ones below:
+
+- **Eq, PartialEq, Ord, PartialOrd**: comparison.
+
+- **Clone**: creates `T` from `&T` via a copy.
+
+- **Copy**: provides copy semantics instead of move semantics.
+
+- **Hash**: computes a hash from `&T`.
+
+- **Default**: creates an empty instance of a data type.
+
+- **Debug**: formats a value using the `{:?}` formatter.
