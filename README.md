@@ -9,3 +9,9 @@ Implementing traits for types in Rust consider some implicit rules that guarante
 Additionally, the **orphan rule** is basically used to prevent users from implementing external traits for external types. As an example, in the context of a user's own library, implementing `Display` for `Vec<T>` would not be possible because both are defined in the standard library. However, `Display` could be implemented for a user-defined type `MyType` and a user-defined trait `MyTrait` can be implemented for any type, including external ones. Shortly put, according to this rule either the trait must be local or the self-type must be local.
 
 In a practical scenario, without these rules, two crates could implement the same trait for the same type, and Rust wouldn't know which implementation to use.
+
+# Default implementations
+
+Instead of requiring the implementation for all methods defined by a trait on every type, a default behavior can be specified so that errors regarding the lack of a method implementation can be avoided and, when necessary, the method's default behaviour can be simply overridden by a specified one.
+
+Default implementations can call other methods in the same trait, even if those methods don't have a default implementation.
