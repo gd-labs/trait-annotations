@@ -15,3 +15,41 @@ In a practical scenario, without these rules, two crates could implement the sam
 Instead of requiring the implementation for all methods defined by a trait on every type, a default behavior can be specified so that errors regarding the lack of a method implementation can be avoided and, when necessary, the method's default behaviour can be simply overridden by a specified one.
 
 Default implementations can call other methods in the same trait, even if those methods don't have a default implementation.
+
+# Traits as parameters
+
+It is possible to define functions' parameters in terms of their trait-specified behaviour:
+
+```rs
+pub fn foo(a: &impl Bar, b: &impl Bar)
+```
+
+Which can also be represented in the form of a **trait bound**:
+
+```rs
+pub fn foo<T: Bar>(a: &T, b: &T)
+```
+
+## Multiple trait bounds
+
+When specifying more than one trait bound for some type, the `+` syntax can be used:
+
+```rs
+pub fn foo<T: Bar + Baz>(item: &T)
+```
+
+However, a function's signature readability could be affected when using too many trait bounds. For this reason, Rust provides the `where` clause for defining them separately, so instead of writing something like:
+
+```rs
+fn function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
+```
+
+a more appropriate representation would be:
+
+```rs
+fn function<T, U>(t: &T, u: &U) -> i32
+where
+    T: Display + Clone,
+    U: Clone + Debug,
+{
+```

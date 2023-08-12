@@ -38,3 +38,11 @@ impl Summary for Tweet {
         format!("{}: {}", self.username, self.content)
     }
 }
+
+/// Instead of a concrete type for the `item` parameter, the `impl`
+/// keyword is specified along with the trait name. This parameter
+/// accepts any type that implements the specified trait.
+pub fn notify(item: &impl Summary) {
+    // Any methods derived from the `Summary` trait can be called.
+    println!("Breaking news! {}", item.sumarize());
+}
