@@ -46,3 +46,17 @@ pub fn notify(item: &impl Summary) {
     // Any methods derived from the `Summary` trait can be called.
     println!("Breaking news! {}", item.sumarize());
 }
+
+/// By using `impl Summary` or the return type, we specify that the
+/// function returns some type that implements the `Summary` trait
+/// without namig the concrete type.
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as your probably already know, people"
+        ),
+        reply: false,
+        retweet: false
+    }
+}

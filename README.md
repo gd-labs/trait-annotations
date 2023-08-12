@@ -53,3 +53,7 @@ where
     U: Clone + Debug,
 {
 ```
+
+# Returning types that implement traits
+
+The `impl Trait` syntax can also be used to return a value of some type that implements a trait. The ability to specify a return type only by the trait it implements is especially useful in the context of [closures and iterators](). Closures and iterstors create types that only the compiler knows or types that are very long to specify.
