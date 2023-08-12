@@ -1,0 +1,3 @@
+# trait-annotations
+
+[Chapter 10.2](https://doc.rust-lang.org/book/ch10-02-traits.html) from [The Rust Book](https://doc.rust-lang.org/book/) introduces the concept of **trait**, which defines a functionality a type has and can share with others. Given that traits are a fundamental feature of the language for providing shared behaviour (along with generics), this small project serves as a more detailed analysis of the tool for a better comprehension of its utility.
